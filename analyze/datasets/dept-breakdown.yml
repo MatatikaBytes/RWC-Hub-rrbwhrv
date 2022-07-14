@@ -1,0 +1,39 @@
+version: datasets/v0.2
+source: analyze/channels/RWC
+title: Departments represented
+questions: Which departments completed the survey and their breakdown?
+description: |-
+  Number of responses in each department.
+
+  #pulse
+metadata: |-
+  {
+    "name": "sample_data",
+    "label": "Responses by department", 
+    "related_table": {
+      "columns": [
+        {"name": "dept", "label": "Department", "description": "Department"}
+      ],
+      "aggregates": [
+        {"name": "total_completed", "label": "Total Completed", "description": "Total Completed"}
+      ]
+    }
+  }
+visualisation: |-
+  {"chartjs-chart": 
+    {"chartType": "bar", 
+      "options": {
+        "scales": {
+          "y": {
+            "beginAtZero": true
+          }
+        }
+      }
+    }
+  }
+query: |-
+  select 
+  sd."which__directorate_do_you_work_in?" "sample_data.dept",
+  count(*) "sample_data.total_completed" 
+  from sample_data sd
+  group by "which__directorate_do_you_work_in?";

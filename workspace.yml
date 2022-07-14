@@ -1,5 +1,6 @@
 version: workspaces/v0.1
 name: RWC Hub
+image_url: https://rworld.co.uk/wp-content/uploads/2020/05/rworld-logo-white.png
 dataset_paths:
 - analyze/datasets
 - .meltano/analyze/datasets
